@@ -12,7 +12,8 @@ export async function Negotiate({
   companySize: string;
 }) {
   try {
-    const response = await fetch('http://localhost:5050/api/negotiate', {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5050';
+    const response = await fetch(`${apiUrl}/api/negotiate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
