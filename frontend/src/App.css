@@ -1,0 +1,227 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0f0f0f;
+  color: #f0f0f0;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #00c896, #00a8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  text-align: center;
+  color: #888;
+  margin-bottom: 40px;
+  font-size: 1rem;
+}
+
+/* Form */
+.salary-form {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.salary-form input,
+.salary-form select {
+  background: #0f0f0f;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #f0f0f0;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.salary-form input:focus,
+.salary-form select:focus {
+  border-color: #00c896;
+}
+
+.salary-form input::placeholder {
+  color: #555;
+}
+
+.salary-form select option {
+  background: #1a1a1a;
+}
+
+.salary-form button {
+  background: linear-gradient(135deg, #00c896, #00a8ff);
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.salary-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Result Card */
+.result-card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.result-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  color: #00c896;
+}
+
+.result-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: #f0f0f0;
+}
+
+.result-card h4 {
+  font-size: 1rem;
+  margin: 20px 0 8px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.result-card p {
+  color: #ccc;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.result-card pre {
+  background: #0f0f0f;
+  border-radius: 8px;
+  padding: 16px;
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.result-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.result-card ul li {
+  padding: 8px 0;
+  color: #ccc;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+/* Badge */
+.badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.badge.green {
+  background: #00ff0020;
+  border: 1px solid #00ff0050;
+  color: #00c896;
+}
+
+.badge.yellow {
+  background: #ffff0020;
+  border: 1px solid #ffff0050;
+  color: #ffd700;
+}
+
+.badge.red {
+  background: #ff000020;
+  border: 1px solid #ff000050;
+  color: #ff6b6b;
+}
+
+/* Negotiation Script */
+.negotiation-script-card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.negotiation-script-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: #00c896;
+}
+
+.negotiation-script-card pre {
+  background: #0f0f0f;
+  border-radius: 8px;
+  padding: 16px;
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin-bottom: 16px;
+}
+
+.negotiation-script-card button {
+  background: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: #f0f0f0;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.negotiation-script-card button:hover {
+  border-color: #00c896;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .salary-form,
+  .result-card,
+  .negotiation-script-card {
+    padding: 20px;
+  }
+}
