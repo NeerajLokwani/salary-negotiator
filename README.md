@@ -65,7 +65,7 @@ Open `http://localhost:5173`
 
 ## Live Demo
 
-[salary-negotiator.vercel.app](https://salary-negotiator.vercel.app)
+[salary-negotiator.vercel.app](https://salary-negotiator-pi.vercel.app/)
 
 ---
 
