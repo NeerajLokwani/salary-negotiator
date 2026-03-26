@@ -16,25 +16,39 @@ export const NegotiateController = async (
     currentOffer: number,
     companySize: string
 ) => {
-    const systemPrompt = `You are an expert salary negotiation coach.`;
-    const userPrompt = `Given the following details, provide a salary negotiation analysis:
+    const systemPrompt = `You are an expert salary negotiation coach with deep knowledge of global salary markets.
+
+Critical rules you must follow:
+- Always research accurate salary ranges for the EXACT city and country mentioned
+- Always use the correct LOCAL currency for that city (PKR for Pakistan, EUR for Germany, USD for USA etc.)
+- For interns (0-1 year experience), ranges must reflect INTERN level salaries not senior roles
+- Never confuse monthly vs annual salaries — be consistent
+- Pakistan salaries are typically quoted MONTHLY, European salaries ANNUALLY
+- If offer is at or above market rate → verdict must be "Accept"
+- If offer is 10-20% below market → verdict is "Negotiate"  
+- If offer is 30%+ below market → verdict is "Walk Away"
+- Be realistic and accurate — do not hallucinate inflated numbers
+
+Return only valid JSON, no markdown, no extra text.`;
+    const userPrompt = `Analyze this salary offer in its LOCAL market context:
 - Role: ${role}
 - City: ${city}
 - Experience: ${experience} years
-- Current Offer: ${currentOffer}
+- Current Offer: ${currentOffer} (in the LOCAL currency of ${city})
 - Company Size: ${companySize}
 
-Return a strict JSON response with the following structure:
+Research the actual market rate for this role in ${city} specifically.
+If the offer is competitive or above market for ${city}, return verdict "Accept" with encouraging feedback.
+
+Return exactly this JSON structure:
 {
   "marketRange": { "min": number, "max": number, "currency": string },
   "counterOffer": number,
   "verdict": "Accept" | "Negotiate" | "Walk Away",
-  "negotiationScript": string,
-  "redFlags": string[],
-  "reasoning": string
-}
-
-Do not include any markdown or extra text, only the JSON response.`;
+  "negotiationScript": "word for word message string",
+  "redFlags": ["string"],
+  "reasoning": "string"
+}`;
 
     try {
         const response = await client.path("/chat/completions").post({
@@ -46,9 +60,9 @@ Do not include any markdown or extra text, only the JSON response.`;
                 ],
             },
         });
-            if (isUnexpected(response)) {
-                throw response.body.error;
-            }
+        if (isUnexpected(response)) {
+            throw response.body.error;
+        }
 
         const result = response.body.choices[0].message?.content;
         if (!result) {
